@@ -17,7 +17,7 @@ int	is_separator(char s, char c)
 	return (s == c);
 }
 
- int	ft_count(char const *s, char c)
+int	ft_count(char const *s, char c)
 {
 	int	count;
 	int	i;
@@ -35,7 +35,6 @@ int	is_separator(char s, char c)
 			return (-1);
 		if (is_separator(s[i], c) && s[i + 1] && !is_separator(s[i + 1], c))
 			count++;
-		
 		i++;
 	}
 	return (count);
