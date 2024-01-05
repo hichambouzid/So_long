@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:28:39 by hibouzid          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/01/05 11:56:19 by hibouzid         ###   ########.fr       */
-=======
-/*   Updated: 2024/01/04 16:31:47 by hibouzid         ###   ########.fr       */
->>>>>>> eb7ecc4d538989fdc79a293274fe5ee1e7b33bd0
+/*   Updated: 2024/01/05 13:01:42 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +29,6 @@ int		ft_free(int index, char **ptr);
 int		ft_strcmp(char *s1, char *s2);
 int		is_separator(char s, char c);
 int		check_square(char **ptr, int len);
+int		check_countent(char **ptr, int len);
 
 #endif

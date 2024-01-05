@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:29:47 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/05 11:55:52 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:07:38 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	**ft_split(char const *s, char c)
 
 // int main()
 // {
-// 	char **str = ft_split("hicham\nbouzid\n\nde tenger\n", '\n');
+// 	char **str = ft_split("hicham\nbouzid\nde tenger\n", '\n');
 // 	for (int i = 0; str[i]; i++)
-// 		printf("%s\n", str[i]);
+// 		printf("%s", str[i]);
 // }

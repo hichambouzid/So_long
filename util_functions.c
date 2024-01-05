@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:22:45 by hibouzid          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/01/05 11:56:36 by hibouzid         ###   ########.fr       */
-=======
-/*   Updated: 2024/01/04 16:30:17 by hibouzid         ###   ########.fr       */
->>>>>>> eb7ecc4d538989fdc79a293274fe5ee1e7b33bd0
+/*   Updated: 2024/01/05 16:07:25 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +54,10 @@ int	check_square(char **ptr, int len)
 	while (is_separator(ptr[0][i], '1') && is_separator(ptr[len - 1][i], '1')
 		&& ptr[len - 1][i] && ptr[0][i])
 		i++;
-	if (i != ft_strlen(ptr[0]) || i != ft_strlen(ptr[len - 1]))
-		return (ft_free(len, ptr));
+	if (i != ft_strlen(ptr[0]) || i != (ft_strlen(ptr[len - 1])))
+		return (ft_free(len, ptr), -1);
 	if (ft_strcmp(ptr[0], ptr[len - 1]) != 0)
-		return (ft_free(len, ptr));
+		return (ft_free(len, ptr), -1);
 	i = 1;
 	while (ptr[i] && i >= len - 2)
 	{
@@ -69,7 +65,36 @@ int	check_square(char **ptr, int len)
 			&& ptr[i][ft_strlen(ptr[i]) - 1] == '1')
 			i++;
 		else
-			return (ft_free(len, ptr));
+			return (ft_free(len, ptr), -1);
 	}
 	return (i);
+}
+
+int check_countent(char **ptr, int len)
+{
+	int i;
+	int j;
+	int tab[128];
+
+	i = -1;
+	while (++i < 128)
+		tab[i] = 0;
+	j = 1;
+	while (j < len - 1)
+	{
+		i = 0;
+		while (ptr[j][i])
+		{
+			if (ptr[j][i] == '1' || ptr[j][i] == '0' || ptr[j][i] == 'C'
+				|| ptr[j][i] == 'E' || ptr[j][i] == 'P')
+				tab[ptr[j][i]] += 1;
+				else
+					return (ft_free(len, ptr) , -1);
+				i++;
+		}
+		j++;
+	}
+	if (tab['1'] && tab['0'] && tab['C'] >= 1 && tab['E'] == 1 && tab['P'] == 1)
+		return (0);
+	return (ft_free(len	, ptr) , -1);
 }
