@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:29:47 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/02 18:56:05 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/05 11:55:52 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_separator(char s, char c)
 	return (s == c);
 }
 
- int	ft_count(char const *s, char c)
+int	ft_count(char const *s, char c)
 {
 	int	count;
 	int	i;
@@ -35,7 +35,6 @@ int	is_separator(char s, char c)
 			return (-1);
 		if (is_separator(s[i], c) && s[i + 1] && !is_separator(s[i + 1], c))
 			count++;
-		
 		i++;
 	}
 	return (count);
