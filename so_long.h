@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:28:39 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/08 16:07:30 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:45:08 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ typedef struct  s_point
 	int x;
 	int y;
 } t_point;
+
+typedef struct  data
+{
+	void	*mlx;
+	void	*mlx_win;
+	int x;
+	int y;
+} t_data;
 
 
 #endif

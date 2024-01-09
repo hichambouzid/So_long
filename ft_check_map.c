@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/08 16:52:44 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:55:18 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 #include <unistd.h>
+#include <mlx.h>
 #include <fcntl.h>
+#include <math.h>
 
 int ft_strlen(char *str)
 {
@@ -100,6 +102,38 @@ char *get_read_all(int fd)
 	return (buffer);
 }
 
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
+
+// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	*(unsigned int*)dst = color;
+// }
+
+void	draw_c(t_data *data)
+{
+	for (int i = 0; i < 1080; i++)
+	{
+		for (int j = 0; j < 1080; j++)
+		{
+			if (sqrt(pow(data->x - i, 2)+pow(data->y - j, 2)) <= 50)
+				mlx_pixel_put(data->mlx, data->mlx_win, i, j, 0xffffff);
+		}
+	}
+}
+
+int	key_hook(int keycode, t_data *data)
+{
+	printf("key is ->> %d\n", keycode);
+	if (keycode == 124)
+	{
+		mlx_clear_window(data->mlx, data->mlx_win);
+		// data->x += 50;
+		// draw_c(data);
+	}
+	return (0);
+}
+
 int main()
 {
 	int fd;
@@ -107,11 +141,23 @@ int main()
 	char **ptr;
 	t_point size;
 	t_point bigin;
-	
+
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
 		return (0);
 	buffer = get_read_all(fd);
+
+	// t_data *data = malloc(sizeof(t_data));
+
+	// data->mlx = mlx_init();
+	// data->mlx_win = mlx_new_window(data->mlx, 1080, 1080, "Hello world!");
+	// data->x=500;
+	// data->y=500;
+
+	// draw_c(data);
+	// mlx_key_hook(data->mlx_win, key_hook, &data);
+	// mlx_loop(data->mlx);
+
 	if (*buffer == 0)
 		print_error("Error\n", buffer);
 	ptr = ft_split(buffer, '\n');
@@ -129,6 +175,6 @@ int main()
 	int e = (int)(ft_test(buffer, 'P') / ft_strlen(ptr[0]));
 	// printf("%d\n", e);
 	printf("the possition of a player in buffer %d\n", ft_test(ptr[e], 'P'));
-	
+
 	// printf("%d\n", ft_strlen(ptr[0]));
 }
