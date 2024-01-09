@@ -11,15 +11,14 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 #include <unistd.h>
 // #include <mlx.h>
 #include <fcntl.h>
 #include <math.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -27,10 +26,10 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-char *ft_strdup(char *str)
+char	*ft_strdup(char *str)
 {
-	char *ptr;
-	int len;
+	char	*ptr;
+	int		len;
 
 	len = ft_strlen(str);
 	ptr = malloc(sizeof(char) * (len + 1));
@@ -46,11 +45,11 @@ char *ft_strdup(char *str)
 	return (ptr);
 }
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *str;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
@@ -73,18 +72,18 @@ char *ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
-void print_error(char *str, char *fre)
+void	print_error(char *str, char *fre)
 {
 	ft_putstr(str);
 	free(fre);
 	exit(-1);
 }
 
-char *get_read_all(int fd)
+char	*get_read_all(int fd)
 {
-	char *str;
-	char *buffer;
-	int count;
+	char	*str;
+	char	*buffer;
+	int		count;
 
 	count = 0;
 	buffer = ft_strdup("");
@@ -96,7 +95,7 @@ char *get_read_all(int fd)
 		count = read(fd, str, 300);
 		buffer = ft_strjoin(buffer, str);
 		if (count < 300 || count == 0)
-			break;
+			break ;
 	}
 	free(str);
 	return (buffer);
@@ -134,34 +133,31 @@ char *get_read_all(int fd)
 // 	return (0);
 // }
 
-int main()
+int	main(void)
 {
-	int fd;
-	char *buffer;
-	char **ptr;
-	t_point size;
-	t_point begin;
+	int		fd;
+	char	*buffer;
+	char	**ptr;
+	t_point	size;
+	t_point	begin;
 
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
 		return (0);
 	buffer = get_read_all(fd);
-
 	// t_data *data = malloc(sizeof(t_data));
-
 	// data->mlx = mlx_init();
 	// data->mlx_win = mlx_new_window(data->mlx, 1080, 1080, "Hello world!");
 	// data->x=500;
 	// data->y=500;
-
 	// draw_c(data);
 	// mlx_key_hook(data->mlx_win, key_hook, &data);
 	// mlx_loop(data->mlx);
-
 	if (*buffer == 0)
 		print_error("Error\n", buffer);
 	ptr = ft_split(buffer, '\n');
-	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr, ft_count(buffer, '\n')) < 0)
+	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr,
+			ft_count(buffer, '\n')) < 0)
 		print_error("Error\n", buffer);
 	size.x = ft_strlen(ptr[0]) - 1;
 	size.y = ft_count(buffer, '\n') - 1;

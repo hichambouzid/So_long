@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int ft_position(char *buffer, int c)
+int	ft_position(char *buffer, int c)
 {
 	int i;
 

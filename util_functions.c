@@ -48,7 +48,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	check_square(char **ptr, int len)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (is_separator(ptr[0][i], '1') && is_separator(ptr[len - 1][i], '1')
@@ -70,7 +70,7 @@ int	check_square(char **ptr, int len)
 	return (i);
 }
 
-int check_countent(char **ptr, int len)
+int	check_countent(char **ptr, int len)
 {
 	int i;
 	int j;
@@ -88,14 +88,13 @@ int check_countent(char **ptr, int len)
 			if (ptr[j][i] == '1' || ptr[j][i] == '0' || ptr[j][i] == 'C'
 				|| ptr[j][i] == 'E' || ptr[j][i] == 'P')
 				tab[(int)ptr[j][i]] += 1;
-				else
-					return (ft_free(len, ptr) , -1);
-				i++;
+			else
+				return (ft_free(len, ptr), -1);
+			i++;
 		}
 		j++;
 	}
 	if (tab['1'] && tab['0'] && tab['C'] >= 1 && tab['E'] == 1 && tab['P'] == 1)
 		return (tab['C']);
-	return (ft_free(len	, ptr) , -1);
-
+	return (ft_free(len, ptr), -1);
 }
