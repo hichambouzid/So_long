@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/09 11:55:18 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:01:43 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 #include <unistd.h>
-#include <mlx.h>
+// #include <mlx.h>
 #include <fcntl.h>
 #include <math.h>
 
@@ -23,7 +23,7 @@ int ft_strlen(char *str)
 
 	i = 0;
 	while (str[i])
-	i++;
+		i++;
 	return (i);
 }
 
@@ -35,7 +35,7 @@ char *ft_strdup(char *str)
 	len = ft_strlen(str);
 	ptr = malloc(sizeof(char) * (len + 1));
 	if (!ptr)
-	return (NULL);
+		return (NULL);
 	len = 0;
 	while (str[len])
 	{
@@ -90,13 +90,13 @@ char *get_read_all(int fd)
 	buffer = ft_strdup("");
 	str = malloc(sizeof(char) * 300);
 	if (!str)
-	return (NULL);
+		return (NULL);
 	while (1)
 	{
 		count = read(fd, str, 300);
 		buffer = ft_strjoin(buffer, str);
 		if (count < 300 || count == 0)
-		break ;
+			break;
 	}
 	free(str);
 	return (buffer);
@@ -110,29 +110,29 @@ char *get_read_all(int fd)
 // 	*(unsigned int*)dst = color;
 // }
 
-void	draw_c(t_data *data)
-{
-	for (int i = 0; i < 1080; i++)
-	{
-		for (int j = 0; j < 1080; j++)
-		{
-			if (sqrt(pow(data->x - i, 2)+pow(data->y - j, 2)) <= 50)
-				mlx_pixel_put(data->mlx, data->mlx_win, i, j, 0xffffff);
-		}
-	}
-}
+// void	draw_c(t_data *data)
+// {
+// 	for (int i = 0; i < 1080; i++)
+// 	{
+// 		for (int j = 0; j < 1080; j++)
+// 		{
+// 			if (sqrt(pow(data->x - i, 2)+pow(data->y - j, 2)) <= 50)
+// 				mlx_pixel_put(data->mlx, data->mlx_win, i, j, 0xffffff);
+// 		}
+// 	}
+// }
 
-int	key_hook(int keycode, t_data *data)
-{
-	printf("key is ->> %d\n", keycode);
-	if (keycode == 124)
-	{
-		mlx_clear_window(data->mlx, data->mlx_win);
-		// data->x += 50;
-		// draw_c(data);
-	}
-	return (0);
-}
+// int	key_hook(int keycode, t_data *data)
+// {
+// 	printf("key is ->> %d\n", keycode);
+// 	if (keycode == 124)
+// 	{
+// 		mlx_clear_window(data->mlx, data->mlx_win);
+// 		// data->x += 50;
+// 		// draw_c(data);
+// 	}
+// 	return (0);
+// }
 
 int main()
 {
@@ -140,7 +140,7 @@ int main()
 	char *buffer;
 	char **ptr;
 	t_point size;
-	t_point bigin;
+	t_point begin;
 
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
@@ -163,18 +163,15 @@ int main()
 	ptr = ft_split(buffer, '\n');
 	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr, ft_count(buffer, '\n')) < 0)
 		print_error("Error\n", buffer);
-	// size.x = ft_strlen(tab[0]);
-	// size.y = ft_count(buffer, '\n') + 1;
-	// begin.x =;
-	// begin.x =;
-	// 	flood_fill(tab, size, );
-	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P'));
-	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P') / 13);
-	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P') % 13);
-	// printf("%d\n", ft_test(buffer ,'P'));
-	int e = (int)(ft_test(buffer, 'P') / ft_strlen(ptr[0]));
-	// printf("%d\n", e);
-	printf("the possition of a player in buffer %d\n", ft_test(ptr[e], 'P'));
-
-	// printf("%d\n", ft_strlen(ptr[0]));
+	size.x = ft_strlen(ptr[0]) - 1;
+	size.y = ft_count(buffer, '\n') - 1;
+	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
+	begin.y = ft_position(buffer, 'P') / size.x;
+	printf("position x:%d\n", begin.x);
+	printf("position y:%d\n", begin.y);
+	printf("wide -->%d\n", size.x);
+	printf("lenght -->%d\n", size.y);
+	flood_fill(ptr, size, begin);
+	for (int i = 0;  ptr[i]; i++)
+		printf("%s\n", ptr[i]);
 }

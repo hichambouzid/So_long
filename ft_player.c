@@ -6,13 +6,13 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:58:55 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/08 16:53:00 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:35:39 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_test(char *buffer, int c)
+int ft_position(char *buffer, int c)
 {
 	int i;
 
