@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/09 19:01:43 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:28:14 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,11 +167,11 @@ int main()
 	size.y = ft_count(buffer, '\n') - 1;
 	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
 	begin.y = ft_position(buffer, 'P') / size.x;
-	printf("position x:%d\n", begin.x);
-	printf("position y:%d\n", begin.y);
-	printf("wide -->%d\n", size.x);
-	printf("lenght -->%d\n", size.y);
+	// printf("position x:%d\n", begin.x);
+	// printf("position y:%d\n", begin.y);
+	// printf("wide -->%d\n", size.x);
+	// printf("lenght -->%d\n", size.y);
 	flood_fill(ptr, size, begin);
-	for (int i = 0;  ptr[i]; i++)
-		printf("%s\n", ptr[i]);
+	// for (int i = 0;  ptr[i]; i++)
+	// 	printf("%s\n", ptr[i]);
 }

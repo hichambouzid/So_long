@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:22:45 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/08 14:42:17 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:26:49 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int check_countent(char **ptr, int len)
 		{
 			if (ptr[j][i] == '1' || ptr[j][i] == '0' || ptr[j][i] == 'C'
 				|| ptr[j][i] == 'E' || ptr[j][i] == 'P')
-				tab[ptr[j][i]] += 1;
+				tab[(int)ptr[j][i]] += 1;
 				else
 					return (ft_free(len, ptr) , -1);
 				i++;
