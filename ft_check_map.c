@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/05 16:07:54 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:52:44 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,30 @@ int main()
 	int fd;
 	char *buffer;
 	char **ptr;
-
+	t_point size;
+	t_point bigin;
+	
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
 		return (0);
 	buffer = get_read_all(fd);
 	if (*buffer == 0)
 		print_error("Error\n", buffer);
-	// printf("%s", buffer);
 	ptr = ft_split(buffer, '\n');
-	// printf("%s", ptr[0]);
-	// ft_count(buffer, '\n'));
-	// printf("%d\n", check_countent(ptr, ft_count(buffer, '\n')));
 	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr, ft_count(buffer, '\n')) < 0)
 		print_error("Error\n", buffer);
+	// size.x = ft_strlen(tab[0]);
+	// size.y = ft_count(buffer, '\n') + 1;
+	// begin.x =;
+	// begin.x =;
+	// 	flood_fill(tab, size, );
+	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P'));
+	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P') / 13);
+	// printf("the possition of a player in buffer %d\n", ft_test(buffer, 'P') % 13);
+	// printf("%d\n", ft_test(buffer ,'P'));
+	int e = (int)(ft_test(buffer, 'P') / ft_strlen(ptr[0]));
+	// printf("%d\n", e);
+	printf("the possition of a player in buffer %d\n", ft_test(ptr[e], 'P'));
+	
+	// printf("%d\n", ft_strlen(ptr[0]));
 }

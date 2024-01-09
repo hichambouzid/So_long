@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:22:45 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/05 16:07:25 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:42:17 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int check_countent(char **ptr, int len)
 		j++;
 	}
 	if (tab['1'] && tab['0'] && tab['C'] >= 1 && tab['E'] == 1 && tab['P'] == 1)
-		return (0);
+		return (tab['C']);
 	return (ft_free(len	, ptr) , -1);
+
 }
