@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:22:45 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/09 19:26:49 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:47:20 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	check_square(char **ptr, int len)
 
 int	check_countent(char **ptr, int len)
 {
-	int i;
-	int j;
-	int tab[128];
+	int		i;
+	int		j;
+	int		tab[128];
 
 	i = -1;
 	while (++i < 128)

@@ -1,6 +1,6 @@
 NAME = so_long
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror  -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 
@@ -12,7 +12,7 @@ $(NAME): $(CFILS)
 all: $(NAME)
 
 clean:
-	$(NAME)
+	rm -rf $(NAME)
 
 fclean: clean
 

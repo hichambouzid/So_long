@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:58:55 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/09 12:35:39 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:47:56 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_position(char *buffer, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (buffer[i])

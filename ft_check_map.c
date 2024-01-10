@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/09 19:28:14 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/10 21:50:45 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <unistd.h>
-// #include <mlx.h>
+#include <mlx.h>
 #include <fcntl.h>
 #include <math.h>
 
@@ -101,13 +101,13 @@ char	*get_read_all(int fd)
 	return (buffer);
 }
 
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-// {
-// 	char	*dst;
+void	my_mlx_pixel_put(tt_data *data, int x, int y, int color)
+{
+	char	*dst;
 
-// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 // void	draw_c(t_data *data)
 // {
@@ -121,18 +121,6 @@ char	*get_read_all(int fd)
 // 	}
 // }
 
-// int	key_hook(int keycode, t_data *data)
-// {
-// 	printf("key is ->> %d\n", keycode);
-// 	if (keycode == 124)
-// 	{
-// 		mlx_clear_window(data->mlx, data->mlx_win);
-// 		// data->x += 50;
-// 		// draw_c(data);
-// 	}
-// 	return (0);
-// }
-
 int	main(void)
 {
 	int		fd;
@@ -140,7 +128,7 @@ int	main(void)
 	char	**ptr;
 	t_point	size;
 	t_point	begin;
-
+	char	*relative_path = "./f.xpm";
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
 		return (0);
@@ -163,11 +151,21 @@ int	main(void)
 	size.y = ft_count(buffer, '\n') - 1;
 	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
 	begin.y = ft_position(buffer, 'P') / size.x;
-	// printf("position x:%d\n", begin.x);
-	// printf("position y:%d\n", begin.y);
-	// printf("wide -->%d\n", size.x);
-	// printf("lenght -->%d\n", size.y);
 	flood_fill(ptr, size, begin);
-	// for (int i = 0;  ptr[i]; i++)
-	// 	printf("%s\n", ptr[i]);
+	void	*mlx;
+	void	*mlx_win;
+	int		img_width;
+	int		img_height;
+	// tt_data	img;
+		void	*img;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "So_long");
+	// img.img = mlx_new_image(mlx, 1920, 1080);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	// 							&img.endian);
+	// my_mlx_pixel_put(&img, 10, 10, 0x00FF0000);
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	mlx_put_image_to_window(mlx, mlx_win, img, img_width, img_height);
+	mlx_loop(mlx);
 }
