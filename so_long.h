@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:28:39 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/10 15:50:09 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/11 22:23:13 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
 
 typedef struct s_point
 {
@@ -33,18 +33,23 @@ typedef struct data
 	int		y;
 }			t_data;
 
-typedef	struct	ss_data {
+typedef struct ss_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	tt_data;
+}			t_dataa;
 
+// typedef struct s_image
+// {
+
+// } t_image;
 int			ft_strlen(char *str);
 char		*ft_strdup(char *str);
 char		*ft_strjoin(char *s1, char *s2);
-void		print_error(char *str, char *fre);
+void		print_error(char *str, char *to_free);
 void		ft_putstr(char *str);
 char		**ft_split(char const *s, char c);
 int			ft_count(char const *s, char c);
@@ -55,5 +60,7 @@ int			check_square(char **ptr, int len);
 int			check_countent(char **ptr, int len);
 void		flood_fill(char **tab, t_point size, t_point begin);
 int			ft_position(char *buffer, int c);
+char		**ft_valid(char **ptr, int len, char *buffer);
+char		**ft_check_map(void);
 
 #endif

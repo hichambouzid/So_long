@@ -1,10 +1,10 @@
 NAME = so_long
 
-CFLAGS = -Wall -Wextra -Werror  -lmlx -framework OpenGL -framework AppKit
+CFLAGS =   -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 
-CFILS = flood_fill.c ft_check_map.c ft_player.c ft_split.c  util_functions.c
+CFILS = flood_fill.c ft_check_map.c ft_player.c ft_split.c  util_functions.c main.c
 
 $(NAME): $(CFILS)
 	$(CC) $(CFLAGS) $(CFILS) -o $(NAME)

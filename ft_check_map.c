@@ -6,25 +6,11 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/10 21:50:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:00:11 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <unistd.h>
-#include <mlx.h>
-#include <fcntl.h>
-#include <math.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strdup(char *str)
 {
@@ -72,6 +58,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
+
 void	print_error(char *str, char *fre)
 {
 	ft_putstr(str);
@@ -101,46 +88,18 @@ char	*get_read_all(int fd)
 	return (buffer);
 }
 
-void	my_mlx_pixel_put(tt_data *data, int x, int y, int color)
+char	**ft_check_map(void)
 {
-	char	*dst;
+	int			fd;
+	char		*buffer;
+	char		**ptr;
+	t_point		size;
+	t_point		begin;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-// void	draw_c(t_data *data)
-// {
-// 	for (int i = 0; i < 1080; i++)
-// 	{
-// 		for (int j = 0; j < 1080; j++)
-// 		{
-// 			if (sqrt(pow(data->x - i, 2)+pow(data->y - j, 2)) <= 50)
-// 				mlx_pixel_put(data->mlx, data->mlx_win, i, j, 0xffffff);
-// 		}
-// 	}
-// }
-
-int	main(void)
-{
-	int		fd;
-	char	*buffer;
-	char	**ptr;
-	t_point	size;
-	t_point	begin;
-	char	*relative_path = "./f.xpm";
 	fd = open("maps", O_RDONLY);
 	if (fd < 0)
 		return (0);
 	buffer = get_read_all(fd);
-	// t_data *data = malloc(sizeof(t_data));
-	// data->mlx = mlx_init();
-	// data->mlx_win = mlx_new_window(data->mlx, 1080, 1080, "Hello world!");
-	// data->x=500;
-	// data->y=500;
-	// draw_c(data);
-	// mlx_key_hook(data->mlx_win, key_hook, &data);
-	// mlx_loop(data->mlx);
 	if (*buffer == 0)
 		print_error("Error\n", buffer);
 	ptr = ft_split(buffer, '\n');
@@ -152,20 +111,7 @@ int	main(void)
 	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
 	begin.y = ft_position(buffer, 'P') / size.x;
 	flood_fill(ptr, size, begin);
-	void	*mlx;
-	void	*mlx_win;
-	int		img_width;
-	int		img_height;
-	// tt_data	img;
-		void	*img;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "So_long");
-	// img.img = mlx_new_image(mlx, 1920, 1080);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
-	// my_mlx_pixel_put(&img, 10, 10, 0x00FF0000);
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	mlx_put_image_to_window(mlx, mlx_win, img, img_width, img_height);
-	mlx_loop(mlx);
+	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer);
+	free(buffer);
+	return (ptr);
 }

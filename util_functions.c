@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:22:45 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/10 11:47:20 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:58:34 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int	check_square(char **ptr, int len)
 	if (ft_strcmp(ptr[0], ptr[len - 1]) != 0)
 		return (ft_free(len, ptr), -1);
 	i = 1;
-	while (ptr[i] && i >= len - 2)
+	while (ptr[i] && i <= len - 2)
 	{
-		if (ft_strlen(ptr[i]) == len && ptr[i][0] == '1'
-			&& ptr[i][ft_strlen(ptr[i]) - 1] == '1')
+		if (ptr[i][0] == '1' && ptr[i][ft_strlen(ptr[i]) - 1] == '1' &&
+			ft_strlen(ptr[i]) == ft_strlen(ptr[0]))
 			i++;
 		else
 			return (ft_free(len, ptr), -1);

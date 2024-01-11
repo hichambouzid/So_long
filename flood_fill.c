@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:19:32 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/10 11:48:29 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:56:55 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,40 @@ void	fill(char **tab, t_point size, t_point begin, char to_fill)
 void	flood_fill(char **tab, t_point size, t_point begin)
 {
 	fill(tab, size, begin, '-');
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	**ft_valid(char **ptr, int len, char *buffer)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (ptr[i][j])
+		{
+			if (ptr[i][j] == 'P' || ptr[i][j] == 'E' || ptr[i][j] == 'C')
+			{
+				ft_free(len, ptr);
+				free(buffer);
+				ft_putstr("Error\n");
+				exit(-1);
+			}
+			j++;
+		}
+		i++;
+	}
+	ft_free(len, ptr);
+	return (ft_split(buffer, '\n'));
 }
