@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:28:39 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/12 10:15:10 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:32:13 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void		flood_fill(char **tab, t_point size, t_point begin);
 int			ft_position(char *buffer, int c);
 char		**ft_valid(char **ptr, int len, char *buffer);
 char		**ft_check_map(void);
+int			ft_cordinate(char **ptr, int *x, int *y, char p);
 
 #endif

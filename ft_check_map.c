@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/12 12:21:29 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:42:03 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,29 @@ char	**ft_check_map(void)
 	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr,
 			ft_count(buffer, '\n')) < 0)
 		print_error("Error\n", buffer);
-	size.x = ft_strlen(ptr[0]) + 1;
-	size.y = ft_count(buffer, '\n') - 1;
+	size.x = ft_strlen(ptr[0]) ;
+	size.y = ft_count(buffer, '\n');
 	begin.y = ft_position(buffer, 'P') / size.x;
-	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
+	ft_cordinate(ptr, &begin.x, &begin.y, 'P');
+	/**
+
+
+	printf("%d\n", size.x);
+	printf("%d\n", size.y);
+	printf("%d\n", begin.x);
+	printf("%d\n", begin.y);
+	ptr = ft_valid(ptr, size.y , buffer);
+	printf("here\n");
+	for (int i = 0; ptr[i]; i++)
+		printf("%s\n", ptr[i]);
+	*/
+	printf("%d\n", size.x);
+	printf("%d\n", size.y);
+	printf("%d\n", begin.x);
+	printf("%d\n", begin.y);
+	printf("%d\n", ft_position(buffer, 'P'));
+	flood_fill(ptr, size, begin);
+	ft_putstr("here\n");
 	for (int i = 0; ptr[i]; i++)
 		printf("%s\n", ptr[i]);
 	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer);
