@@ -6,7 +6,7 @@
 /*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:29:47 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/05 16:07:38 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:09:08 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int	ft_count(char const *s, char c)
 
 	i = 0;
 	count = 0;
+	if (s[0] == c)
+	{
+		ft_putstr("Error\n");
+		exit(-1);
+	}
 	if (!is_separator(s[0], c))
 	{
 		count++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/11 18:00:11 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:21:29 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ char	*get_read_all(int fd)
 
 	count = 0;
 	buffer = ft_strdup("");
-	str = malloc(sizeof(char) * 300);
+	str = malloc(sizeof(char) * 2147483646);
 	if (!str)
 		return (NULL);
 	while (1)
 	{
-		count = read(fd, str, 300);
+		count = read(fd, str, 2147483646);
 		buffer = ft_strjoin(buffer, str);
-		if (count < 300 || count == 0)
+		if (count < 2147483646 || count == 0)
 			break ;
 	}
 	free(str);
@@ -106,11 +106,12 @@ char	**ft_check_map(void)
 	if (check_square(ptr, ft_count(buffer, '\n')) < 0 || check_countent(ptr,
 			ft_count(buffer, '\n')) < 0)
 		print_error("Error\n", buffer);
-	size.x = ft_strlen(ptr[0]) - 1;
+	size.x = ft_strlen(ptr[0]) + 1;
 	size.y = ft_count(buffer, '\n') - 1;
-	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
 	begin.y = ft_position(buffer, 'P') / size.x;
-	flood_fill(ptr, size, begin);
+	begin.x = ft_position(ptr[ft_position(buffer, 'P') / size.x], 'P');
+	for (int i = 0; ptr[i]; i++)
+		printf("%s\n", ptr[i]);
 	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer);
 	free(buffer);
 	return (ptr);
