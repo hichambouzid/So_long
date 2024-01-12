@@ -41,8 +41,8 @@ int	ft_strlen(char *str)
 
 char	**ft_valid(char **ptr, int len, char *buffer)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < len)

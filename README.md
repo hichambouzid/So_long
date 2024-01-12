@@ -1,2 +1,2 @@
-# So_long
-the first experience with games development 
+#So_long
+the first experience with games development

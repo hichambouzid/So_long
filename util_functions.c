@@ -61,8 +61,8 @@ int	check_square(char **ptr, int len)
 	i = 1;
 	while (ptr[i] && i <= len - 2)
 	{
-		if (ptr[i][0] == '1' && ptr[i][ft_strlen(ptr[i]) - 1] == '1' &&
-			ft_strlen(ptr[i]) == ft_strlen(ptr[0]))
+		if (ptr[i][0] == '1' && ptr[i][ft_strlen(ptr[i]) - 1] == '1'
+			&& ft_strlen(ptr[i]) == ft_strlen(ptr[0]))
 			i++;
 		else
 			return (ft_free(len, ptr), -1);
@@ -72,9 +72,9 @@ int	check_square(char **ptr, int len)
 
 int	check_countent(char **ptr, int len)
 {
-	int		i;
-	int		j;
-	int		tab[128];
+	int	i;
+	int	j;
+	int	tab[128];
 
 	i = -1;
 	while (++i < 128)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:58:55 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/12 15:31:17 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:31:01 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ft_position(char *buffer, int c)
 	return (-1);
 }
 
-int ft_cordinate(char **ptr, int *x, int *y, char p)
+int	ft_cordinate(char **ptr, int *x, int *y, char p)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (ptr[i])
@@ -41,11 +41,21 @@ int ft_cordinate(char **ptr, int *x, int *y, char p)
 			{
 				*x = j;
 				*y = i;
-				return (0);				
+				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
 	return (0);
+}
+
+int	ft_strleen(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
 }
