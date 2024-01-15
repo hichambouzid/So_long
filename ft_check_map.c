@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:17:38 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/12 16:24:41 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:59:01 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	**ft_check_map(void)
 	t_point	size;
 	t_point	begin;
 
-	fd = open("maps", O_RDONLY);
+	fd = open("./maps/maps.ber", O_RDONLY);
 	if (fd < 0)
 		return (0);
 	buffer = get_read_all(fd);
@@ -110,8 +110,9 @@ char	**ft_check_map(void)
 	size.y = ft_count(buffer, '\n');
 	begin.y = ft_position(buffer, 'P') / size.x;
 	ft_cordinate(ptr, &begin.x, &begin.y, 'P');
-	flood_fill(ptr, size, begin);
-	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer);
-	free(buffer);
-	return (ptr);
+	flood_fill(ptr, size, begin, 'E');
+	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer, 0);
+	flood_fill(ptr, size, begin, '1');
+	ptr = ft_valid(ptr, ft_count(buffer, '\n'), buffer, 'E');
+	return (free(buffer), ptr);
 }

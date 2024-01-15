@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:28:39 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/01/12 21:30:29 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:02:11 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,17 @@ typedef struct data
 	void	*mlx_win;
 	int		x;
 	int		y;
+	char	**ptr;
+	void	*wall;
+	void	*exit;
+	void	*free;
+	void	*col;
+	void	*play;
 }			t_data;
 
-typedef struct ss_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_dataa;
-
-typedef struct s_image
-{
-	char	*wall;
-	char	*exit;
-	char	*free;
-	char	*col;
-}			t_image;
-
 // texture->exit = mlx_xpm_file_to_image(mlx, "./exit.xpm", x, y)
-void		ft_put_windows(void);
-void		*ft_image(char c, void *mlx, int *x, int *y);
+void		ft_put_windows(t_data *t);
+void		*ft_image(char c, t_data *t);
 int			ft_strleen(char **ptr);
 int			ft_strlen(char *str);
 char		*ft_strdup(char *str);
@@ -66,9 +55,9 @@ int			ft_strcmp(char *s1, char *s2);
 int			is_separator(char s, char c);
 int			check_square(char **ptr, int len);
 int			check_countent(char **ptr, int len);
-void		flood_fill(char **tab, t_point size, t_point begin);
+void		flood_fill(char **tab, t_point size, t_point begin, char c);
 int			ft_position(char *buffer, int c);
-char		**ft_valid(char **ptr, int len, char *buffer);
+char		**ft_valid(char **ptr, int len, char *buffer, char c);
 char		**ft_check_map(void);
 int			ft_cordinate(char **ptr, int *x, int *y, char p);
 
